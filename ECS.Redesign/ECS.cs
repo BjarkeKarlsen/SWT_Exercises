@@ -43,9 +43,6 @@ namespace ECS.Redesign
             return _tempSensor.GetTemp();
         }
 
-        public bool RunSelfTest()
-        {
-            return _tempSensor.RunSelfTest() && _heater.RunSelfTest();
-        }
+        
     }
 }
