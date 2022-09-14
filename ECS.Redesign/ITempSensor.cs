@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ECS.Redesign
 {
-    internal interface ITempSensor
+    public interface ITempSensor
     {
         public int GetTemp();
     }

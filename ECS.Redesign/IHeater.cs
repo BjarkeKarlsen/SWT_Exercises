@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ECS.Redesign
 {
-    internal interface IHeater
+    public interface IHeater
     {
         public void TurnOn();
         public void TurnOff();
