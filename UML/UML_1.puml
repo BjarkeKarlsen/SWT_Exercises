@@ -46,10 +46,6 @@ Interface ITempSensor {
     + GetTemp() : int
 }
 
-class Logging {
-    IDK
-}
-
 
 
 ITempSensor <-- ECS
