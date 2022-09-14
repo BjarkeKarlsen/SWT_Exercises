@@ -1,0 +1,62 @@
+@startuml
+!theme materia
+
+
+
+
+class ECS {
+    - _threshoold : int
+    - _tempSensor : ITempSensor
+    - _heater : IHeater
+    + ECS(thr : int, tempSensor : ITempSensor, heater : IHeater)
+    + Requlate() : void
+    + SetThreshold(thr : int) : void
+    + GetThreshold() : int
+    + GetCurTemp() : int
+}
+
+
+class Heater{
+    + TurnOn() : void
+    + TurnOff() : void
+}
+
+
+class TempSensor {
+    + GetTemp() : int
+}
+
+class FakeHeater{
+    + TurnOn() : void
+    + TurnOff() : void
+}
+
+
+class FakeTempSensor {
+    + GetTemp() : int
+}
+
+
+Interface IHeater {
+    + TurnOn() : void
+    + TurnOff() : void
+}
+
+Interface ITempSensor {
+    + GetTemp() : int
+}
+
+class Logging {
+    IDK
+}
+
+
+
+ITempSensor <-- ECS
+IHeater <-- ECS
+ITempSensor <|..TempSensor
+IHeater <|.. Heater
+ITempSensor <|..FakeTempSensor
+IHeater <|.. FakeHeater
+
+@enduml

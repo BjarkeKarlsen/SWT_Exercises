@@ -1,0 +1,35 @@
+@startuml
+!theme materia
+
+
+class Heater{
+    + TurnOn() : void
+    + TurnOff() : void
+    + TurnRunSelfTest() : bool
+
+}
+
+
+class TempSensor {
+    + GetTemp() : int
+    + RunSelfTest() : bool
+}
+
+
+class ECS {
+    - _threshoold : int
+    - _tempSensor : Tempsensor
+    - _heater : Heater
+    + Requlate() : void
+    + SetThreshold(thr : int) : void
+    + GetThreshold() : int
+    + GetCurTemp() : int
+    + RunSelfTest() : bool
+}
+
+
+ECS *-- TempSensor
+ECS *-- Heater
+
+
+@enduml
