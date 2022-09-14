@@ -5,16 +5,16 @@ using System.Text;
 namespace ECS.Redesign
 {
     public class FakeHeater : IHeater
+    {
+        public bool isHeating { get; protected set; }
+        public void TurnOn()
+        {
+            isHeating = true;
+        }
 
-    {
-    public void TurnOn()
-    {
-        System.Console.WriteLine("Heater is on");
-    }
-
-    public void TurnOff()
-    {
-        System.Console.WriteLine("Heater is off");
-    }
+        public void TurnOff()
+        {
+            isHeating = false;
+        }
     }
 }
