@@ -8,6 +8,5 @@ namespace ECS.Redesign
     { 
         public void TurnOn();
         public void TurnOff();
-        
     }
 }
