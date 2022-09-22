@@ -8,5 +8,6 @@ namespace LibraryDoorSystem.Interface
 {
     public interface IEntryNotification
     {
+        public void NotifyEntryDenied(int id);
     }
 }

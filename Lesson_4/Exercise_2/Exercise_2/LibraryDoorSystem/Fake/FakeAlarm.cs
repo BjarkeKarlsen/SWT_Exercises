@@ -1,24 +1,16 @@
-﻿namespace LibraryDoorSystem
+﻿using LibraryDoorSystem.Interface;
+
+namespace LibraryDoorSystem.Fake
 {
-    public class FakeAlarm
+    public class FakeAlarm : IAlarm
     {
-
-        private int _id;
-
-
-        public void RequestEntry(int id)
+        public FakeAlarm()
         {
-            _id = id;
         }
 
-        public void DoorOpened()
+        public void RaiseAlarm()
         {
-
-        }
-
-        public void DoorClosed()
-        {
-
+            Console.WriteLine("Alarm is on!");
         }
     }
 }

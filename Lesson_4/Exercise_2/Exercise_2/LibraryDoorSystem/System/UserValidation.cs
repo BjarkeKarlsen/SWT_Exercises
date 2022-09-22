@@ -1,8 +1,8 @@
 ﻿using LibraryDoorSystem.Interface;
 
-namespace LibraryDoorSystem.Fake
+namespace LibraryDoorSystem.System
 {
-    public class FakeUserValidation : IUserValidation
+    public class UserValidation : IUserValidation
     {
         private readonly int _id = 5;
 
@@ -12,3 +12,4 @@ namespace LibraryDoorSystem.Fake
         }
     }
 }
+

@@ -1,12 +1,7 @@
-﻿using LibraryDoorSystem.Interface;
-using LibraryDoorSystem.System;
-
-namespace LibraryDoorSystem.Fake
+﻿namespace LibraryDoorSystem.System
 {
-
-    public class FakeDoor : IDoor
+    public class Door
     {
-
         private const bool CloseDoor = false;
         private const bool OpenDoor = true;
 
