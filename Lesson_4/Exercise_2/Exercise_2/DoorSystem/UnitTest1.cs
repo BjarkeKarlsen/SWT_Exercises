@@ -3,12 +3,9 @@ using System;
 
 namespace DoorSystem
 {
-    [TestClass]
-    public class UnitTest1
+    [Test]
+    public void Test1()
     {
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
+        var sub = Substitute.For<IDoor>();
     }
 }
