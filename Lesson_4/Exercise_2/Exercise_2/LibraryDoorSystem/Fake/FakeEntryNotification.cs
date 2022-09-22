@@ -12,7 +12,7 @@ namespace LibraryDoorSystem.Fake
     {
         public void NotifyEntryDenied(int id)
         {
-
+            Console.WriteLine($"Entry Denied for {id}!");
         }
 
     }

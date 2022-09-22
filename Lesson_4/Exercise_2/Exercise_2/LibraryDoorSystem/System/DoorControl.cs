@@ -30,7 +30,7 @@ namespace LibraryDoorSystem.System
             if (!_userValidation.ValidateEntryRequest(id))
                 _entryNotification.NotifyEntryDenied(id);
             else if (!_userValidation.ValidateEntryRequest(id) && _currentState == Open)
-                _alarm.Raised();
+                _alarm.RaiseAlarm();
 
         }
 

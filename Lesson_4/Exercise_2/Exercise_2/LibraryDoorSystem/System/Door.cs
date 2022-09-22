@@ -1,6 +1,8 @@
-﻿namespace LibraryDoorSystem.System
+﻿using LibraryDoorSystem.Interface;
+
+namespace LibraryDoorSystem.System
 {
-    public class Door
+    public class Door : IDoor
     {
         private const bool CloseDoor = false;
         private const bool OpenDoor = true;
