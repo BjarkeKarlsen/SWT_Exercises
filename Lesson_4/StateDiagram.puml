@@ -1,0 +1,26 @@
+@startuml
+!theme materia
+scale 350 width
+[*] --> DoorClosed
+DoorClosed-->DoorOpening : EntryRequest[RequestValidated] / Opens door
+DoorOpening-->DoorClosing : Door opens/Closes Door
+DoorClosing-->DoorClosed : Door Close/Notifies closed door
+DoorClosed-->DoorBreached : Door opens / Closes door and raises Alarm
+DoorClosed-->DoorClosed : EntryRequest[RequestDenied] / Notifies Entry Denied
+
+
+state DoorClosed{
+ DoorClosed :  do/ValidateEntryRequest
+ DoorClosed : exit/NotifyEntryGranted
+}
+
+state DoorClosing{
+}
+
+state DoorOpening{ 
+}
+
+state DoorBreached{
+}
+
+@enduml

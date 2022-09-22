@@ -1,0 +1,31 @@
+@startuml
+!theme cyborg
+DoorControl <|-- Door
+DoorControl <|-- UserValidation
+DoorControl <|-- EntryNotification
+DoorControl <|-- Alarm
+
+
+class DoorControl{
+    - RequestEntry(id : int) : void
+    + DoorOpened() :void
+    + DoorClosed() : void
+}
+class Door{
+    + Close() : void
+    + Open() : void
+    
+}
+
+class UserValidation{
+    + ValidateEntryRequest(id int) : bool
+}
+
+class EntryNotification{
+    - NotifyEntryDenied(id : int) : void
+}
+
+class Alarm{
+    - RaiseAlarm() : void
+}
+@enduml

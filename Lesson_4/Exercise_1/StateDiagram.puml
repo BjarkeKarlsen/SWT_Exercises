@@ -1,0 +1,29 @@
+@startuml
+scale 350 width
+[*] --> DoorClosed
+DoorClosed-->DoorOpening : Request Entry/ Opens door
+DoorOpening-->DoorClosing : Door opens/Closes Door
+DoorClosing-->DoorClosed : Door Close/Notifies closed door
+DoorClosed-->DoorBreached 
+
+
+state DoorClosed{
+ DoorClosed :  do ValidateEntryRequest
+}
+
+
+state DoorClosing{
+ 
+}
+
+state DoorOpening{
+ 
+}
+
+state DoorBreached{
+ 
+}
+
+
+
+@enduml

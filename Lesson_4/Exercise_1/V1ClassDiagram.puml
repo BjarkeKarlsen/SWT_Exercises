@@ -1,0 +1,76 @@
+@startuml
+!theme cyborg
+DoorControl <|-- IDoor
+DoorControl <|-- IUserValidation
+DoorControl <|-- IEntryNotification
+DoorControl <|-- IAlarm
+
+IEntryNotification <|-- EntryNotification
+IAlarm <|-- Alarm
+IDoor <|-- Door
+IUserValidation <|-- UserValidation
+
+IEntryNotification <|-- FakeEntryNotification
+IAlarm <|-- FakeAlarm
+IDoor <|-- FakeDoor
+IUserValidation <|-- FakeUserValidation
+
+class DoorControl{
+    - RequestEntry(id : int) : void
+    + DoorOpened() :void
+    + DoorClosed() : void
+}
+
+Interface IDoor{
+    + Close() : void
+    + Open() : void
+}
+class Door{
+    + Close() : void
+    + Open() : void
+}
+
+class FakeDoor{
+    + Close() : void
+    + Open() : void
+    
+}
+
+Interface IUserValidation{
+    + ValidateEntryRequest(id int) : bool
+}
+
+class FakeUserValidation{
+    + ValidateEntryRequest(id int) : bool
+}
+class UserValidation{
+    + ValidateEntryRequest(id int) : bool
+}
+
+Interface IEntryNotification{
+    - NotifyEntryDenied(id : int) : void
+}
+
+class EntryNotification{
+    - NotifyEntryDenied(id : int) : void
+}
+
+class FakeEntryNotification{
+    - NotifyEntryDenied(id : int) : void
+}
+
+
+Interface IAlarm{
+    - RaiseAlarm() : void
+}
+
+class Alarm{
+    - RaiseAlarm() : void
+}
+
+class FakeAlarm{
+    - RaiseAlarm() : void
+}
+
+
+@enduml
