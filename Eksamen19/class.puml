@@ -1,0 +1,103 @@
+@startuml 
+!theme plain
+
+
+
+IButton <|.d. Button
+IButton -r-> UserInterface
+IButton <.-r. UserInterface
+UserInterface -d-> ITemperaturmaaler
+UserInterface -d-> ITemperaturstyring
+UserInterface -d-> IKamerastyring
+UserInterface -r-> IDisplay
+ITemperaturmaaler <|.d. Temperaturmaaler
+ITemperaturstyring <|.d.Temperaturstyring
+IKamerastyring <|.d. Kamerastyring
+ILogFile <|.d. LogFile
+IRelæ <|.d. KaermaRelae
+IRelæ <|.d. VarmeRelae
+IDisplay <|.d. Display
+ITimeProvider <|.d. TimeProvider
+ITemperaturmaaler -r-> ITemperaturstyring 
+ITemperaturmaaler <.r. ITemperaturstyring 
+Temperaturstyring -r-> ILogFile
+Kamerastyring --> ILogFile
+LogFile --> ITimeProvider
+Kamerastyring -> ITimeProvider
+Temperaturstyring --> IRelæ
+Kamerastyring --> IRelæ
+
+
+class Display {
+
+}
+
+class Kamerastyring { 
+}
+
+class UserInterface {
+
+}
+
+class Temperaturstyring {
+
+}
+
+class "Temperaturmåler" as Temperaturmaaler {
+
+}
+
+class LogFile {
+
+}
+
+class Button {
+
+}
+
+class VarmeRelae {
+
+}
+
+class KaermaRelae {
+
+}
+
+class TimeProvider {
+
+}
+
+Interface IButton {
+}
+
+ 
+Interface ILogFile {
++ Logentry(Time, action) : void
+}
+
+Interface ITemperaturmaaler {
+ + GetTemperature() : int
+}
+Interface ITemperaturstyring {
+ + TemperatureChanged(Temp) : void
+ + IsHeatOn() : bool
+}
+
+Interface IKamerastyring {
+ + GetDaysRemaing() : int
+}
+
+Interface IRelæ {
+    + TurnOn() : void
+    + TurnOff() : void
+}
+
+Interface IDisplay {
+
+}
+
+Interface ITimeProvider {
+
+}
+
+@enduml

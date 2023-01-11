@@ -1,0 +1,48 @@
+@startuml 
+!theme plain
+
+hide fields
+
+ControlHumidity -d-> ITouchscreen
+
+ControlHumidity <-d-> ITimerModul
+ControlHumidity -d-> ISMS
+ControlHumidity -d-> IHumidityMeter
+ControlHumidity -d-> IWaterRelay
+
+ITouchscreen <|.d.Touchscreen
+ISMS <|.d. SMS
+ITimerModul <|.d. TimerModul
+IHumidityMeter <|.d. HumidityMeter
+IWaterRelay <|.d. WaterRelay
+
+Class ControlHumidity {
+    + TimeOut() : void
+}
+
+Interface ITouchscreen {
+    + ShowHumidity(int Measure) : void
+    + ShowAlarm(enum Alarm) : void
+    + DeleteAlarm() : void
+}
+
+Interface ITimerModul {
+ + Start(int time) : void
+}
+
+Interface ISMS {
+    + SendAlarmOccured(enum Alarm) : void
+    + DeleteAlarmOccured(enum Alarm) : void
+}
+
+Interface IHumidityMeter{
+    + GetHumidity() : int
+}
+
+Interface IWaterRelay{
+   + TurnOn() : void
+   + TurnOff() : void
+}
+
+
+@enduml
