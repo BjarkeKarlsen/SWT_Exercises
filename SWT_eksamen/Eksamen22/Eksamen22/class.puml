@@ -1,0 +1,68 @@
+@startuml 
+
+package  "cd BankSystem" <<frame>> {
+IDisplay <|.l. Display
+ICalculateCharges <|.l. CalculateCharges
+IApproveLoan <|.l. ApproveLoan
+IPrinter <|.d. Printer
+IAccountServerInterface <|.d. AccountServerInterface
+IInterestServerInterface <|.l. InterestServerInterface
+IUserInterface <|.r. UserInterface
+IInterestServerInterface ..> InterestServerEventArgs
+ICalculateCharges ..>  InterestServerEventArgs
+
+
+class InterestServerEventArgs{
+   + LoanInterest : double
+}
+
+class InterestServerInterface {
+   + NewInterest(interest : double) :void
+}
+
+Interface IDisplay {
+    + UpdateLoanInterest(loanInterest : double) : void
+    + ShowInterestToBig(loanInterest : double) : void
+    + ShowLoanApproved(loanInterest : double) : void
+}
+
+Interface ICalculateCharges {
+    + CalculateCharges(amount : double, duration : int) : double
+    + HandleNewLoan(loanInterest) : Eventhandler<InterestServerEventArgs>
+}
+
+Interface IApproveLoan {
+    + Apply(amount : double, duration : int, income : double, expenses : double) : bool
+    + RealiseLoan(accountNumber : int) : bool
+}
+
+Interface IPrinter {
+    + PrintLoanDocument(amount : double,  duration : int, interest : double) : void
+}
+
+Interface IAccountServerInterface {
+    
+}
+
+Interface IInterestServerInterface {
+    + BookForAmount(amount : double, accountNumber : int) : bool
+}
+
+Interface IUserInterface {
+    
+}
+
+IInterestServerInterface <-d- ICalculateCharges
+IInterestServerInterface .d.> ICalculateCharges
+
+ICalculateCharges -d-> IDisplay
+IApproveLoan -l-> IDisplay
+IUserInterface -l-> IDisplay
+
+IApproveLoan -r-> IPrinter
+IApproveLoan -d-> IAccountServerInterface
+
+IApproveLoan -u-> ICalculateCharges
+IUserInterface --> IApproveLoan
+}
+@enduml
